@@ -22,7 +22,7 @@ public class Simulator {
 			myDeck.add(new DiamondCard(i));
 		}
 		shuffleDeck();
-		//sortDeck();
+		sortDeck();
 	}
 	
 	public List<Card> getDeck() {
@@ -34,6 +34,7 @@ public class Simulator {
 	}
 	
 	public void sortDeck() {
-		Collections.sort(myDeck);
+		Collections.sort(myDeck, Card.SuitComparator);
+		Collections.sort(myDeck, Card.ValueComparator);
 	}
 }

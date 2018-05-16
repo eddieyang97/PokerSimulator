@@ -1,16 +1,22 @@
 package card;
 
-public class Card implements Comparable<Card>{
-	public final String[] suits = {"Spade", "Heart", "Club", "Diamond"};
-	private String mySuit;
+import java.util.Comparator;
+
+public abstract class Card {
+	
+	public static final String[] suits = {"Spade", "Heart", "Club", "Diamond"};
+	public static final Comparator<Card> SuitComparator = (c1, c2) -> c1.mySuit - c2.mySuit;
+	public static final Comparator<Card> ValueComparator = (c1, c2) -> c1.myValue - c2.myValue;
+	
+	private int mySuit;
 	private int myValue;
 	
-	public Card(String suit, int value) {
+	public Card(int suit, int value) {
 		mySuit = suit;
 		myValue = value;
 	}
 	
-	public String getSuit() {
+	public int getSuit() {
 		return mySuit;
 	}
 	
@@ -32,11 +38,7 @@ public class Card implements Comparable<Card>{
 		} else {
 			temp = "Ace";
 		}
-		return temp + " of " + mySuit;
+		return temp + " of " + suits[mySuit - 1];
 	}
 
-	@Override
-	public int compareTo(Card card) {
-		return myValue - card.myValue;
-	}
 }
