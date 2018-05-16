@@ -21,11 +21,16 @@ public class Dealer {
 	public void getNewDeck() {
 		deck = new ArrayList<Card>();
 		int vals[] = Card.values;
-		for(int i = vals[0]; i <= vals[vals.length - 1]; i++) {
-			deck.add(new SpadeCard(i));
-			deck.add(new HeartCard(i));
-			deck.add(new ClubCard(i));
-			deck.add(new DiamondCard(i));
+		for(int i = 0; i < Card.suits.length; i++) {
+			for(int j = vals[0]; j <= vals[vals.length - 1]; j++) {
+				try {
+					Class<?> clazz = Class.forName("card." + Card.suits[i]);
+					deck.add((Card) clazz.getDeclaredConstructor(int.class).newInstance(j));
+				} catch (Exception e) {
+					// not ideal, but for now
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 	
