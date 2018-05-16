@@ -44,29 +44,21 @@ public class HandFactory {
 	public Hand getHand(List<Card> cards) {
 		updateSuitMap(cards);
 		updateValueMap(cards);
-		/*
-		int strength = getStrength(cards);
-		List<Card> bestCombination = getBestCombination(cards);
-		switch(strength) {
-			case Hand.STRAIGHTFLUSH: return new StraightFlush(bestCombination);
-			case Hand.FOUROFAKIND: return new FourOfAKind(bestCombination);
-			case Hand.FULLHOUSE: return new StraightFlush(bestCombination);
-			case Hand.FLUSH: return new StraightFlush(bestCombination);
-			case Hand.STRAIGHT: return new StraightFlush(bestCombination);
-			case Hand.THREEOFAKIND: return new StraightFlush(bestCombination);
-			case Hand.TWOPAIR: return new StraightFlush(bestCombination);
-			case Hand.ONEPAIR: return new StraightFlush(bestCombination);
-			default: return new High(bestCombination);
-		}*/
-		return null;
+
+		if(containsFour()) {
+			return new FourOfAKind(cards);
+		}
+		return new High(cards);
 	}
 	
 	private boolean containsFlush() {
 		return suitMap.entrySet().iterator().next().getValue() > 4;
 	}
 	
-	private boolean containsStraight(List<Card> cards) {
-		return false;
+	private boolean containsStraight() {
+		boolean ret = false;
+		
+		return ret;
 	}
 	
 	private boolean containsFour() {
