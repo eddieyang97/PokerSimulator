@@ -6,7 +6,7 @@ import java.util.List;
 
 public abstract class Card {
 	
-	public static final int[] values = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
+	public static final int[] values = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
 	public static final String[] suits = {"Spade", "Heart", "Club", "Diamond"};
 	public static final Comparator<Card> SuitComparator = (c1, c2) -> c1.mySuit - c2.mySuit;
 	public static final Comparator<Card> ValueComparator = (c1, c2) -> c1.myValue - c2.myValue;

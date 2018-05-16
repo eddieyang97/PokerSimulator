@@ -15,7 +15,7 @@ public class Dealer {
 	public Dealer() {
 		getNewDeck();
 		shuffleDeck();
-		//sortDeck();
+		sortDeck();
 	}
 	
 	public void getNewDeck() {
