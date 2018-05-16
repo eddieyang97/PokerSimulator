@@ -48,6 +48,9 @@ public class HandFactory {
 		if(containsFour()) {
 			return new FourOfAKind(cards);
 		}
+		if(containsTrip() && containsPair()) {
+			return new FullHouse(cards);
+		}
 		return new High(cards);
 	}
 	
