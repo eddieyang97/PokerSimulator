@@ -24,6 +24,14 @@ public abstract class Card {
 		return myValue;
 	}
 	
+	public boolean sameSuit(Card card) {
+		return mySuit == card.mySuit;
+	}	
+	
+	public boolean sameValue(Card card) {
+		return myValue == card.myValue;
+	}
+	
 	@Override
 	public String toString() {
 		String temp;

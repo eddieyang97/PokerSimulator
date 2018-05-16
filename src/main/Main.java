@@ -1,15 +1,17 @@
 package main;
 
 
-import simulator.Simulator;
+import dealer.Dealer;
+import hand.HandFactory;
 
 public class Main {
 	
 	public static void main(String[] args) {
-		Simulator mySim = new Simulator();
-		mySim.getDeck().forEach(card -> {
+		Simulator sim = new Simulator();
+		HandFactory fac = new HandFactory(sim.getDeck());
+		/*sim.getDeck().forEach(card -> {
 			System.out.println(card);
-		});
+		});*/
 	}
 	
 }
