@@ -21,19 +21,19 @@ public class Simulator {
 			myDeck.add(new ClubCard(i));
 			myDeck.add(new DiamondCard(i));
 		}
-		shuffle();
-		//sort();
+		shuffleDeck();
+		//sortDeck();
 	}
 	
 	public List<Card> getDeck() {
 		return myDeck;
 	}
 	
-	public void shuffle() {
+	public void shuffleDeck() {
 		Collections.shuffle(myDeck);
 	}
 	
-	public void sort() {
+	public void sortDeck() {
 		Collections.sort(myDeck);
 	}
 }
