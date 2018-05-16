@@ -8,8 +8,7 @@ import card.*;
 
 public class Dealer {
 	
-	public static final int MINVAL = 2;
-	public static final int MAXVAL = 14;
+	public static final int MAXDECKSIZE = Card.suits.length * Card.values.length;
 	
 	private List<Card> deck;
 	
@@ -21,7 +20,8 @@ public class Dealer {
 	
 	public void getNewDeck() {
 		deck = new ArrayList<Card>();
-		for(int i = MINVAL; i <= MAXVAL; i++) {
+		int vals[] = Card.values;
+		for(int i = vals[0]; i <= vals[vals.length - 1]; i++) {
 			deck.add(new SpadeCard(i));
 			deck.add(new HeartCard(i));
 			deck.add(new ClubCard(i));
@@ -29,15 +29,20 @@ public class Dealer {
 		}
 	}
 	
-	public ArrayList<Card> getCards(int num) {
+	/**
+	 * 
+	 * @param num should be not larger than 52
+	 * @return
+	 */
+	public ArrayList<Card> getCardsFromDeck(int num) {
 		ArrayList<Card> cards = new ArrayList<>();
-		for(int i = 0; i < num; i++) {
-			cards.add(getCardFromDeck());
+		for(int i = 0; i < (num < MAXDECKSIZE? num:MAXDECKSIZE); i++) {
+			cards.add(getOneCardFromDeck());
 		}
 		return cards;
 	}
 	
-	public Card getCardFromDeck() {
+	public Card getOneCardFromDeck() {
 		return deck.remove(0);
 	}
 	
@@ -50,7 +55,7 @@ public class Dealer {
 	}
 	
 	public void sortDeck() {
-		Collections.sort(deck, Card.SuitComparator);
-		Collections.sort(deck, Card.ValueComparator);
+		Card.sortbyValue(deck);
+		Card.sortbySuit(deck);
 	}
 }

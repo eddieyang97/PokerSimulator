@@ -12,15 +12,12 @@ public class HandFactory {
 	private Map<Integer, Integer> suitMap;
 	private Map<Integer, Integer> valueMap;
 	
-	public HandFactory(List<Card> cards) {
-		setUpSuitMap(cards);
-		setUpValueMap(cards);
-		MapUtil.printMap(suitMap);
-		MapUtil.printMap(valueMap);
+	public HandFactory() {
+		suitMap = new HashMap<>();
+		valueMap = new HashMap<>();
 	}
 
-	private void setUpSuitMap(List<Card> cards) {
-		suitMap = new HashMap<>();
+	private void updateSuitMap(List<Card> cards) {
 		cards.forEach(card -> {
 			int suit = card.getSuit();
 			putValue(suitMap, suit);
@@ -28,7 +25,7 @@ public class HandFactory {
 		suitMap = MapUtil.sortByValue(suitMap);
 	}
 	
-	private void setUpValueMap(List<Card> cards) {
+	private void updateValueMap(List<Card> cards) {
 		valueMap = new HashMap<>();
 		cards.forEach(card -> {
 			int val = card.getValue();
@@ -44,7 +41,9 @@ public class HandFactory {
 		map.put(val, map.get(val) + 1);
 	}
 
-	public Hand getHand() {
+	public Hand getHand(List<Card> cards) {
+		updateSuitMap(cards);
+		updateValueMap(cards);
 		/*
 		int strength = getStrength(cards);
 		List<Card> bestCombination = getBestCombination(cards);
@@ -62,20 +61,24 @@ public class HandFactory {
 		return null;
 	}
 	
-	private boolean containsFlush(List<Card> cards) {
+	private boolean containsFlush() {
 		return suitMap.entrySet().iterator().next().getValue() > 4;
 	}
 	
-	private boolean containsFour(List<Card> cards) {
+	private boolean containsStraight(List<Card> cards) {
+		return false;
+	}
+	
+	private boolean containsFour() {
 		return valueMap.entrySet().iterator().next().getValue() == 4;
 	}
 	
-	private boolean containsTrip(List<Card> cards) {
+	private boolean containsTrip() {
 		return valueMap.entrySet().iterator().next().getValue() == 3;
 	}
 	
-	private boolean containsPair(List<Card> cards) {
-		return valueMap.entrySet().iterator().next().getValue() == 3;
+	private boolean containsPair() {
+		return valueMap.entrySet().iterator().next().getValue() == 2;
 	}
 	
 }

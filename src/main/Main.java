@@ -1,17 +1,19 @@
 package main;
 
+import java.util.ArrayList;
 
+import card.Card;
 import dealer.Dealer;
 import hand.HandFactory;
 
 public class Main {
 	
 	public static void main(String[] args) {
-		Simulator sim = new Simulator();
-		HandFactory fac = new HandFactory(sim.getDeck());
-		/*sim.getDeck().forEach(card -> {
-			System.out.println(card);
-		});*/
+		Dealer dealer = new Dealer();
+		ArrayList<Card> hand = dealer.getCardsFromDeck(10);
+		HandFactory fac = new HandFactory();
+		fac.getHand(hand);
+		hand.forEach(card -> System.out.println(card));
 	}
 	
 }
