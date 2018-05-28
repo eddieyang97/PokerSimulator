@@ -7,15 +7,15 @@ import card.Card;
 
 public abstract class Hand implements Comparable<Hand> {
 	
-	public static final int STRAIGHTFLUSH = 9;
-	public static final int FOUROFAKIND = 8;
-	public static final int FULLHOUSE = 7;
-	public static final int FLUSH = 6;
-	public static final int STRAIGHT = 5;
-	public static final int THREEOFAKIND = 4;
-	public static final int TWOPAIR = 3;
-	public static final int ONEPAIR = 2;
-	public static final int HIGH = 1;
+	public static final int STRAIGHTFLUSH = 8;
+	public static final int FOUROFAKIND = 7;
+	public static final int FULLHOUSE = 6;
+	public static final int FLUSH = 5;
+	public static final int STRAIGHT = 4;
+	public static final int THREEOFAKIND = 3;
+	public static final int TWOPAIR = 2;
+	public static final int ONEPAIR = 1;
+	public static final int HIGH = 0;
 	
 	private ArrayList<Card> myCards;
 	private int myType;
@@ -41,6 +41,10 @@ public abstract class Hand implements Comparable<Hand> {
 
 	public ArrayList<Card> getMyCards() {
 		return myCards;
+	}
+	
+	public int getMyType() {
+		return myType;
 	}
 	
 	public int getMyHigh5() {

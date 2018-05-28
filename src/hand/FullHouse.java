@@ -17,7 +17,7 @@ public class FullHouse extends Hand {
 
 	@Override
 	public String toString() {
-		return Card.valNames[trip] + " full of " + Card.valNames[pair] + "'s";
+		return Card.valNames[trip] + " full of " + Card.valNames[pair] + "s";
 	}
 
 }

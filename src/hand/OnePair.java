@@ -19,7 +19,7 @@ public class OnePair extends Hand {
 
 	@Override
 	public String toString() {
-		return "One pair of " + Card.valNames[pair] + "'s";
+		return "One pair of " + Card.valNames[pair] + "s";
 	}
 
 }

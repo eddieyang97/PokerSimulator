@@ -15,7 +15,7 @@ public class ThreeOfAKind extends Hand {
 
 	@Override
 	public String toString() {
-		return "Trip " + Card.valNames[trip] + "'s";
+		return "Trip " + Card.valNames[trip] + "s";
 	}
 
 }

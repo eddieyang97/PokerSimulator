@@ -17,7 +17,7 @@ public class FourOfAKind extends Hand{
 
 	@Override
 	public String toString() {
-		return "Four " + Card.valNames[four] + "'s with a " + Card.valNames[kicker] + " kicker";
+		return "Four " + Card.valNames[four] + "s with a " + Card.valNames[kicker] + " kicker";
 	}
 
 }
