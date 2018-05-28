@@ -16,7 +16,21 @@ public class HandFactory {
 		suitMap = new HashMap<>();
 		valueMap = new HashMap<>();
 	}
+	
+	public Hand getHand(List<Card> cards) {
+		updateSuitMap(cards);
+		updateValueMap(cards);
 
+		if(containsFour()) {
+			return new FourOfAKind(cards);
+		}
+		if(containsTrip() && containsPair()) {
+			return new FullHouse(cards);
+		}
+		
+		return new High(cards);
+	}
+	
 	private void updateSuitMap(List<Card> cards) {
 		cards.forEach(card -> {
 			int suit = card.getSuit();
@@ -40,28 +54,21 @@ public class HandFactory {
 		}
 		map.put(val, map.get(val) + 1);
 	}
-
-	public Hand getHand(List<Card> cards) {
-		updateSuitMap(cards);
-		updateValueMap(cards);
-
-		if(containsFour()) {
-			return new FourOfAKind(cards);
-		}
-		if(containsTrip() && containsPair()) {
-			return new FullHouse(cards);
-		}
-		return new High(cards);
-	}
 	
 	private boolean containsFlush() {
 		return suitMap.entrySet().iterator().next().getValue() > 4;
 	}
 	
-	private boolean containsStraight() {
-		boolean ret = false;
-		
-		return ret;
+	private boolean containsStraight(List<Card> cards) {
+		int interval = 1;
+		for(int i = 1; i < cards.size(); i++) {
+			if(cards.get(i).getValue() == cards.get(i - 1).getValue() + 1) {
+				interval++;
+			} else if (cards.get(i).getValue() > cards.get(i - 1).getValue() + 1) {
+				interval = 1;
+			}
+		}
+		return interval > 4;
 	}
 	
 	private boolean containsFour() {

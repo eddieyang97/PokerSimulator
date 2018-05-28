@@ -10,4 +10,9 @@ public class High extends Hand {
 		super(cards, Hand.HIGH);
 	}
 
+	@Override
+	public String toString() {
+		return Card.valNames[getMyHigh5()] + " high";
+	}
+
 }

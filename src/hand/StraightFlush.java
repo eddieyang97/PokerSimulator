@@ -10,4 +10,9 @@ public class StraightFlush extends Hand {
 		super(cards, Hand.STRAIGHTFLUSH);
 	}
 
+	@Override
+	public String toString() {
+		return Card.valNames[getMyHigh5()] + " high straight flush";
+	}
+
 }

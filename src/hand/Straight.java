@@ -10,4 +10,9 @@ public class Straight extends Hand {
 		super(cards, Hand.STRAIGHT);
 	}
 
+	@Override
+	public String toString() {
+		return Card.valNames[getMyHigh5()] + " high straight";
+	}
+
 }

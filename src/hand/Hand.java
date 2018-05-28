@@ -24,7 +24,7 @@ public abstract class Hand implements Comparable<Hand> {
 	private int myHigh3;
 	private int myHigh4;
 	private int myHigh5;
-	
+
 	public Hand(List<Card> cards, int type) {
 		myCards = ((ArrayList<Card>) cards);
 		myType = type;
@@ -58,5 +58,11 @@ public abstract class Hand implements Comparable<Hand> {
 	public ArrayList<Card> getMyCards() {
 		return myCards;
 	}
+	
+	public int getMyHigh5() {
+		return myHigh5;
+	}
+	
+	public abstract String toString();
 	
 }
